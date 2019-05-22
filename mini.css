@@ -1,0 +1,410 @@
+:root {
+  /* COLORS */
+  --black: #161616;
+  --grey-darker: #a2a2a2;
+  --grey: #cacaca;
+  --grey-light: #e2e2e2;
+  --grey-lighter: #ececec;
+  --white: #fafafa;
+  --blue: #2a74ed;
+
+  /* DIMENSIONS */
+  --header-height: 45px;
+}
+
+html {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+}
+
+.--bold {
+  font-weight: 800;
+}
+
+.--full {
+  height: calc(100vh - var(--header-height));
+}
+
+.--link {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.--button {
+  font-variant-caps: all-small-caps;
+}
+
+
+
+/*
+ * HEADER ============================================================
+ */
+
+.Header,
+.Header__contents,
+.content__links,
+.content__auth {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.Header {
+  position: relative;
+  height: var(--header-height);
+  padding: 0 17px;
+  align-items: center;
+  background: var(--white);
+  white-space: nowrap;
+  border-bottom: 2px solid #28C76F;
+}
+
+.Header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 1px;
+  left: 0;
+  background-image: linear-gradient(135deg, #81FBB8 10%, #28C76F 100%);
+  filter: blur(7px);
+  z-index: -1;
+}
+
+.Header__logo a {
+  font-size: 1.1rem;
+}
+
+.Header__contents {
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contents {
+  font-size: .9rem;
+}
+
+.contents li {
+  margin-left: 30px;
+}
+
+.contents a:hover {
+  text-decoration: underline;
+}
+
+.content__auth a {
+  text-decoration: none;
+  /* color: var(--blue); */
+}
+
+
+
+/*
+ * MAIN ============================================================
+ */
+
+.MainHome {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.Main__background {
+  position: absolute;
+  width: 800px;
+  right: calc(2vmax + 5%);
+  bottom: -180px;
+  fill: var(--grey-lighter);
+  z-index: -1;
+}
+
+.Main__landing {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  max-width: 600px;
+  padding: 30px 40px;
+}
+
+.landing__info > * {
+  position: relative;
+  opacity: 0;
+  animation: landingShowText 350ms 600ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  z-index: 2;
+}
+
+.Main__landing h2 {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.Main__landing p {
+  font-size: 1.02rem;
+  line-height: 1.6rem;
+  margin-bottom: 30px;
+  animation-delay: 2000ms;
+  font-style: italic;
+}
+
+.Main__landing h1 {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  margin-bottom: 40px;
+  font-weight: 800;
+  animation-delay: 3400ms;
+}
+
+.register__notAMember {
+  font-size: .85rem;
+}
+
+.landing__login,
+.landing__login::after {
+  opacity: 0;
+  transform: scale(1.1);
+  background-image: linear-gradient(135deg, #81FBB8 10%, #28C76F 100%);
+}
+
+.landing__login {
+  position: relative;
+  align-self: flex-end;
+  padding: 8px 12px;
+  padding-top: 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  animation: landingShow 425ms 4200ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.landing__login::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  left: 3px;
+  bottom: 3px;
+  filter: blur(10px);
+  animation: landingShow 425ms 4300ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  z-index: -1;
+}
+
+.MainWeight {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.Main__weights {
+  /* background: red; */
+  margin: 20px 0;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.Weight {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.Weight__emoji {
+  font-size: 4rem;
+  margin: 40px 0;
+  margin-bottom: 25px;
+}
+
+.Weight--gained span {
+  color: #db0a3f;
+}
+
+.Weight--lost span {
+  color: #28C76F;
+}
+
+.results {
+  font-size: .9rem;
+  line-height: 1.25rem;
+  color: var(--grey-darker);
+}
+
+.results span {
+  color: var(--black);
+}
+
+
+
+/*
+ * AUTH ============================================================
+ */
+
+.FormWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Form {
+  position: relative;
+  width: 380px;
+  border-radius: 5px;
+  background: var(--white);
+  border: 2px solid var(--grey-lighter);
+  opacity: 0;
+  transform: scale(.9);
+  animation: landingShow 425ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+.Form__info {
+  padding: 25px 0;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.Form__inputs {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.inputs__item {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 22px;
+  width: 100%;
+  /* background: red; */
+}
+
+.inputs__item:last-of-type {
+  margin-bottom: 20px;
+}
+
+.inputs__item label {
+  color: var(--grey-darker);
+  font-size: .83rem;
+  padding-bottom: 2px;
+}
+
+.inputs__item input {
+  height: 100%;
+  border: 2px solid var(--grey-light);
+  width: 100%;
+  padding: 8px 0;
+  padding-left: 12px;
+  border-radius: 5px;
+  font-size: .9rem;
+}
+
+.error {
+  padding: 8px 15px;
+  color: #db0a3f;
+  background: #ffe2e9;
+  font-size: .9rem;
+}
+
+.Form__submit input {
+  height: 100%;
+  width: 100%;
+  padding: 8px 12px;
+  padding-top: 7px;
+}
+
+.Form__submit,
+.Form__submit::after {
+  background-image: linear-gradient(135deg, #81FBB8 10%, #28C76F 100%);
+}
+
+.Form__submit {
+  align-self: flex-end;
+  position: relative;
+  border-radius: 5px;
+  margin: 40px;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.Form__submit::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  left: 1px;
+  bottom: 1px;
+  filter: blur(7px);
+  z-index: -1;
+}
+
+.Form__reminder {
+  font-size: .75rem;
+  margin: 0 0 40px 40px;
+}
+
+.FormWrapperInline .Form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  border-color: transparent;
+  background: transparent;
+}
+
+.FormWrapperInline .Form__info {
+  padding: 0 15px 0 0;
+  margin-bottom: 0;
+  text-align: left;
+  font-size: .9rem;
+  white-space: nowrap;
+}
+
+.FormWrapperInline .inputs__item {
+  margin: 0;
+}
+
+.FormWrapperInline .inputs__item input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.FormWrapperInline .Form__inputs {
+  margin: 0;
+}
+
+.FormWrapperInline .Form__submit {
+  align-self: center;
+  padding: 1px 0;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+
+
+@keyframes landingShow {
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes landingShowText {
+  0% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ProfileBMI form{
+  color:red;
+}
