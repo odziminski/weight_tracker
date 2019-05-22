@@ -21,4 +21,4 @@ if ($queryGetDate){
   $registrationDate = mb_strtolower($m->setTimezone('GMT')->calendar());
 
 }
-var_dump($registrationDate);
+
